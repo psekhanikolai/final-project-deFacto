@@ -2,7 +2,9 @@ package pages;
 
 import driver.Singleton;
 import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.interactions.Actions;
 
 public class HomePage {
     private final By CLICK_TITLE_MAN = By.xpath("//a[@name='мужчинам']");
@@ -22,6 +24,49 @@ public class HomePage {
         this.driver = Singleton.getDriver();
     }
 
+    public HomePage clickTitleEnter() {
+        driver.findElement(CLICK_TITLE_ENTER).click();
+        return this;
+    }
 
+    public HomePage clickDropButtonEnter() {
+        driver.findElement(CLICK_DROP_BUTTON_ENTER).click();
+        return this;
+    }
 
+    public HomePage open() {
+        driver.get(URL);
+        return this;
+    }
+
+    public HomePage clickTitleBag() {
+        driver.findElement(CLICK_TITLE_BAG).click();
+        return this;
+    }
+
+    public HomePage clickTitleMan() {
+        driver.findElement(CLICK_TITLE_MAN).click();
+        return this;
+    }
+
+    public HomePage clickImg() {
+        driver.findElement(CLICK_IMG).click();
+        return this;
+    }
+
+    public HomePage inputSearchClick() {
+        driver.findElement(SEARCH_INPUT_CLICK).click();
+        return this;
+    }
+
+    public HomePage inputSearchWriteText(String text) {
+        driver.findElement(SEARCH).sendKeys(text);
+        return this;
+    }
+
+    public HomePage writeFieldSearch(String q) {
+        Actions actions = new Actions(driver);
+        actions.sendKeys(q).sendKeys(Keys.ENTER).perform();
+        return this;
+    }
 }
