@@ -1,6 +1,8 @@
 package pages;
 
+import driver.Singleton;
 import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
 
 public class HomePage {
     private final By CLICK_TITLE_MAN = By.xpath("//a[@name='мужчинам']");
@@ -13,5 +15,13 @@ public class HomePage {
     private final By SEARCH_INPUT_CLICK = By.xpath("//input[@class='search-button main-search-button']");
 
     private String URL = "https://www.defacto.com/ru-ua";
+
+    private WebDriver driver;
+
+    public HomePage() {
+        this.driver = Singleton.getDriver();
+    }
+
+
 
 }
