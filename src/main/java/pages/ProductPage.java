@@ -14,10 +14,10 @@ public class ProductPage {
         this.driver = Singleton.getDriver();
     }
 
-    public ProductPage clickProductPage() {
+    public ProductPageAddBag clickProductPage() {
         Actions action = new Actions(driver);
         action.scrollByAmount(0,250).perform();
         driver.findElement(PRODUCT_ADD).click();
-        return this;
+        return new ProductPageAddBag();
     }
 }
