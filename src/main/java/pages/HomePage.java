@@ -29,9 +29,9 @@ public class HomePage {
         return this;
     }
 
-    public HomePage clickDropButtonEnter() {
+    public LoginPage clickDropButtonEnter() {
         driver.findElement(CLICK_DROP_BUTTON_ENTER).click();
-        return this;
+        return new LoginPage();
     }
 
     public HomePage open() {
