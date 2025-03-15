@@ -22,7 +22,7 @@ public class BagPage {
         this.driver = Singleton.getDriver();
     }
 
-    private static final Logger logger = LogManager.getLogger(BagPage.class);
+    private static final Logger logger= LogManager.getLogger(BagPage.class);
 
     public BagPage clickGoBag() {
         try {
