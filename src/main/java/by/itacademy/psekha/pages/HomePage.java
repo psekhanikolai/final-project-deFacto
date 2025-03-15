@@ -1,6 +1,7 @@
 package by.itacademy.psekha.pages;
 
 import by.itacademy.psekha.driver.Singleton;
+import io.qameta.allure.Step;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.By;
@@ -29,6 +30,7 @@ public class HomePage {
 
     private static final Logger logger = LogManager.getLogger(HomePage.class);
 
+    @Step
     public LoginPage clickDropButtonEnter() {
         try {
             driver.findElement(CLICK_DROP_BUTTON_ENTER).click();
@@ -44,6 +46,7 @@ public class HomePage {
         }
     }
 
+    @Step
     public HomePage clickTitleBag() {
         try {
             driver.findElement(CLICK_TITLE_BAG).click();
@@ -59,6 +62,7 @@ public class HomePage {
         }
     }
 
+    @Step
     public HomePage clickTitleMan() {
         try {
             driver.findElement(CLICK_TITLE_MAN).click();
@@ -74,6 +78,7 @@ public class HomePage {
         }
     }
 
+    @Step
     public HomePage scrollSite() {
         Actions action = new Actions(driver);
         try {
@@ -86,6 +91,7 @@ public class HomePage {
         }
     }
 
+    @Step
     public HomePage clickImg() {
         try {
             driver.findElement(CLICK_IMG).click();
@@ -101,6 +107,7 @@ public class HomePage {
         }
     }
 
+    @Step
     public HomePage inputSearchClick() {
         try {
             driver.findElement(SEARCH_INPUT_CLICK).click();
@@ -116,6 +123,7 @@ public class HomePage {
         }
     }
 
+    @Step
     public HomePage inputSearchWriteText(String text) {
         try {
             driver.findElement(SEARCH).sendKeys(text);
@@ -131,6 +139,7 @@ public class HomePage {
         }
     }
 
+    @Step
     public HomePage open() {
         try {
             driver.get(URL);
@@ -146,6 +155,7 @@ public class HomePage {
         }
     }
 
+    @Step
     public HomePage clickTitleEnter() {
         try {
             driver.findElement(CLICK_TITLE_ENTER).click();
@@ -161,12 +171,13 @@ public class HomePage {
         }
     }
 
-    public HomePage writeFieldSearch(String search) {
+    @Step
+    public InputPage writeFieldSearch(String search) {
         {
             try {
                 Actions actions = new Actions(driver);
                 actions.sendKeys(search).sendKeys(Keys.ENTER).perform();
-                return this;
+                return new InputPage();
             } catch (NullPointerException e) {
                 logger.info("Tried to press the ENTER button, but the driver did not work.");
                 logger.error("Driver is not initialized", e);
