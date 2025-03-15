@@ -1,6 +1,7 @@
 package by.itacademy.psekha.pages;
 
 import by.itacademy.psekha.driver.Singleton;
+import io.qameta.allure.Step;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.By;
@@ -24,6 +25,7 @@ public class BagPage {
 
     private static final Logger logger= LogManager.getLogger(BagPage.class);
 
+    @Step
     public BagPage clickGoBag() {
         try {
             driver.findElement(CLICK_GO_BAG).click();
@@ -39,6 +41,7 @@ public class BagPage {
         }
     }
 
+    @Step
     public BagPage clickDelete() {
         try {
             driver.findElement(CLICK_DELETE).click();
@@ -54,12 +57,14 @@ public class BagPage {
         }
     }
 
+    @Step
     public BagPage clickGoBagAndClickDelete() {
         clickGoBag();
         clickDelete();
         return this;
     }
 
+    @Step
     public BagPage openBag() {
         try {
             driver.get(URL);
@@ -75,6 +80,7 @@ public class BagPage {
         }
     }
 
+    @Step
     public BagPage buttonDelete() {
         try {
             driver.findElement(BUTTON_DELETE).click();
@@ -90,6 +96,7 @@ public class BagPage {
         }
     }
 
+    @Step
     public String getTitleText() {
         try {
             return driver.findElement(TITLE_TEXT).getText();
@@ -104,6 +111,7 @@ public class BagPage {
         }
     }
 
+    @Step
     public String getBagTitleText() {
         try {
             return driver.findElement(BAG_TITLE_TEXT).getText();
