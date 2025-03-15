@@ -1,6 +1,7 @@
 package by.itacademy.psekha.api;
 
 import by.itacademy.psekha.base.Base;
+import io.qameta.allure.Step;
 import io.restassured.response.Response;
 
 import java.util.HashMap;
@@ -11,6 +12,7 @@ import static io.restassured.RestAssured.given;
 public class ApiPage extends Base {
     public static final String DEFACTO_URL = BASE_URL + "/ru-kz";
 
+    @Step
     public static Response getDoSite() {
         String URL = DEFACTO_URL;
         Response response = given()
@@ -19,6 +21,7 @@ public class ApiPage extends Base {
         return response;
     }
 
+    @Step
     public static Response postDoLogin() {
         String URL = DEFACTO_URL + "/login/login";
         Response response = given()
@@ -28,6 +31,27 @@ public class ApiPage extends Base {
         return response;
     }
 
+    @Step
+    public static Response postDoLoginEmptyPassword() {
+        String URL = DEFACTO_URL + "/login/login";
+        Response response = given()
+                .params(getParamsEmptyPassword())
+                .when()
+                .post(URL);
+        return response;
+    }
+
+    @Step
+    public static Response postDoLoginEmptyEmail() {
+        String URL = DEFACTO_URL + "/login/login";
+        Response response = given()
+                .params(getParamsEmptyEmail())
+                .when()
+                .post(URL);
+        return response;
+    }
+
+    @Step
     public static Response postDoAddCart() {
         String URL = DEFACTO_URL + "/customer/addtocart";
         Response response = given()
@@ -37,6 +61,7 @@ public class ApiPage extends Base {
         return response;
     }
 
+    @Step
     public static Response postDoAddCart1() {
         String URL = DEFACTO_URL + "/customer/addtocart";
         Response response = given()
@@ -75,6 +100,22 @@ public class ApiPage extends Base {
         HashMap<String, Object> params = new HashMap<>();
         params.put("LoginModel.Email", "john@gmail.com");
         params.put("LoginModel.Password", "455555555");
+        params.put("ReturnUrl", "/ru-kz/search");
+        return params;
+    }
+
+    private static Map<String, Object> getParamsEmptyEmail() {
+        HashMap<String, Object> params = new HashMap<>();
+        params.put("LoginModel.Email", "");
+        params.put("LoginModel.Password", "455555555");
+        params.put("ReturnUrl", "/ru-kz/search");
+        return params;
+    }
+
+    private static Map<String, Object> getParamsEmptyPassword() {
+        HashMap<String, Object> params = new HashMap<>();
+        params.put("LoginModel.Email", "john@gmail.com");
+        params.put("LoginModel.Password", "");
         params.put("ReturnUrl", "/ru-kz/search");
         return params;
     }
