@@ -7,6 +7,7 @@ import io.restassured.response.Response;
 import jdk.jfr.Description;
 import org.assertj.core.api.SoftAssertions;
 import org.junit.jupiter.api.Test;
+
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.equalTo;
 
@@ -66,6 +67,8 @@ public class ApiTest {
         JsonPath jsonPath = new JsonPath(response);
         String passwordEmpty = jsonPath.getString("ValidationErrors[0].v");
         assertThat(passwordEmpty, equalTo("Пожалуйста, введите Ваш пароль "));
+
+
     }
 
     @Test
