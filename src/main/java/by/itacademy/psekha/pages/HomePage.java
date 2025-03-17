@@ -17,7 +17,6 @@ public class HomePage {
     private final By CLICK_TITLE_BAG = By.xpath("//span[text()='Корзина']");
     private final By CLICK_IMG = By.xpath("(//img[@class='yall-loaded'])[2]");
     private final By SEARCH = By.xpath("(//input[@placeholder='Поиск: Джинсы, Боди, Футболки, Спортивные костюмы '])[2]");
-    private final By SEARCH_CLICK = By.xpath("(//span[text()='Поиск']");
     private final By SEARCH_INPUT_CLICK = By.xpath("//input[@class='search-button main-search-button']");
 
     private String URL = "https://www.defacto.com/ru-kz";
