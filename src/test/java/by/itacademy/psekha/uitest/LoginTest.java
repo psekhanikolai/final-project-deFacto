@@ -1,6 +1,8 @@
 package by.itacademy.psekha.uitest;
 
+import by.itacademy.psekha.driver.Singleton;
 import by.itacademy.psekha.pages.HomePage;
+import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -46,5 +48,10 @@ public class LoginTest {
                 .clickLoginEnterButton()
                 .getTextError();
         Assertions.assertEquals("Пожалуйста, проверьте информацию пользователя и попробуйте снова", actual);
+    }
+
+    @AfterEach
+    public void tearDown() {
+        Singleton.quit();
     }
 }
