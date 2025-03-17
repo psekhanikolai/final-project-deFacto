@@ -13,7 +13,8 @@ public class BagPage {
     private final By CLICK_DELETE = By.xpath("//span[text()='Удалить']");
     private final By BUTTON_DELETE = By.xpath("//button[text()='Удалить']");
     private final By TITLE_TEXT = By.xpath("//div[text()='Ваша корзина пуста.']");
-    private final By BAG_TITLE_TEXT = By.xpath("//div[@class='fly-cart__empty-title']");
+    private final By BAG_TITLE_TEXT = By.xpath("//span[text()='Джинсовая куртка свободного кроя оверсайз'] ");
+    private final By CLICK_GO_TO_CART = By.xpath("//button[@class='button button--fluid button--border fly-cart__go-to-cart--button'] ");
 
     private String URL = "https://www.defacto.com/ru-kz/shopping";
 
@@ -76,6 +77,22 @@ public class BagPage {
         } catch (Exception e) {
             logger.info("Attempted to open web driver, but an error occurred.");
             logger.error("Unexpected error occurred while trying to open the URL: " + URL, e);
+            throw e;
+        }
+    }
+
+    @Step
+    public BagPage clickGoToCart() {
+        try {
+            driver.findElement(CLICK_GO_TO_CART).click();
+            return new BagPage();
+        } catch (NoSuchElementException e) {
+            logger.info("Attempted to click but element not found.");
+            logger.error("Element to click not found");
+            throw e;
+        } catch (Exception e) {
+            logger.info("Attempted to click but an error occurred.");
+            logger.error("An error occurred while attempting to click.");
             throw e;
         }
     }
