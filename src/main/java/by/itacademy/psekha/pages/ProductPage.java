@@ -1,6 +1,7 @@
 package by.itacademy.psekha.pages;
 
 import by.itacademy.psekha.driver.Singleton;
+import io.qameta.allure.Step;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.By;
@@ -9,7 +10,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.interactions.Actions;
 
 public class ProductPage {
-    private final By PRODUCT_ADD = By.xpath("//div[@data-swiper='product-card__swiper-1']");
+    private final By PRODUCT_ADD = By.xpath("//div[@data-swiper='product-card__swiper-0']");
 
     private WebDriver driver;
 
@@ -19,10 +20,11 @@ public class ProductPage {
 
     private static final Logger logger = LogManager.getLogger(ProductPage.class);
 
-    public ProductPage scrollSite() {
+    @Step
+    public ProductPage scrollSite1() {
         Actions action = new Actions(driver);
         try {
-            action.scrollByAmount(0, 250).perform();
+            action.scrollByAmount(0, 300).perform();
             return this;
         } catch (Exception e) {
             logger.info("Attempt to scroll the page");
@@ -31,6 +33,7 @@ public class ProductPage {
         }
     }
 
+    @Step
     public ProductPageAddBag clickProductPage() {
         try {
             driver.findElement(PRODUCT_ADD).click();
