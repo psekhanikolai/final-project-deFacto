@@ -1,20 +1,29 @@
 package by.itacademy.psekha.uitest;
 
+import by.itacademy.psekha.driver.Singleton;
 import by.itacademy.psekha.pages.HomePage;
-import org.junit.jupiter.api.DisplayName;
+import io.qameta.allure.Description;
+import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Test;
 
 public class HomePageTest {
     @Test
-    @DisplayName("open website")
+    @Description("open website")
     public void test() {
         HomePage hp = new HomePage()
                 .open();
     }
 
     @Test
-    @DisplayName("Click cart")
+    @Description("Click cart")
     public void test1(){
-        HomePage hp = new HomePage().open().clickTitleBag();
+        HomePage hp = new HomePage()
+                .open()
+                .clickTitleBag();
+    }
+
+    @AfterEach
+    public void tearDown() {
+        Singleton.quit();
     }
 }
