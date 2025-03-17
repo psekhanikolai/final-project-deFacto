@@ -29,6 +29,7 @@ public class InputTest {
     }
 
     @Test
+    @Description("Add product in to cart")
     public void test2(){
         BagPage bp = new HomePage()
                 .open()
