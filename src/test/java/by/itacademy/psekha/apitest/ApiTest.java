@@ -2,10 +2,12 @@ package by.itacademy.psekha.apitest;
 
 import by.itacademy.psekha.api.ApiPage;
 import by.itacademy.psekha.api.ReturnBody;
+import by.itacademy.psekha.driver.Singleton;
 import io.restassured.path.json.JsonPath;
 import io.restassured.response.Response;
 import jdk.jfr.Description;
 import org.assertj.core.api.SoftAssertions;
+import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Test;
 
 import static org.hamcrest.MatcherAssert.assertThat;
@@ -74,6 +76,11 @@ public class ApiTest {
     @Test
     @Description("Empty Email field")
     public void testLogin1() {
+        Response response1 = ApiPage.postDoLoginEmptyEmail();
+        int statusCode = response1.getStatusCode();
+        SoftAssertions softAssertions = new SoftAssertions();
+        softAssertions.assertThat(statusCode).isEqualTo(400);
+
         String response = ApiPage.postDoLoginEmptyEmail()
                 .then()
                 .extract()
@@ -81,5 +88,10 @@ public class ApiTest {
         JsonPath jsonPath = new JsonPath(response);
         String emailEmpty = jsonPath.getString("ValidationErrors[0].v");
         assertThat(emailEmpty, equalTo("Пожалуйста, введите адрес электронной почты"));
+    }
+
+    @AfterEach
+    public void tearDown() {
+        Singleton.quit();
     }
 }
