@@ -1,6 +1,7 @@
 package by.itacademy.psekha.pages;
 
 import by.itacademy.psekha.driver.Singleton;
+import io.qameta.allure.Step;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.By;
@@ -23,6 +24,7 @@ public class LoginPage {
 
     private static final Logger logger = LogManager.getLogger(LoginPage.class);
 
+   @Step
     public LoginPage clickLoginEnterButton() {
         try {
             driver.findElement(LOGIN_ENTER_BUTTON).click();
@@ -38,6 +40,7 @@ public class LoginPage {
         }
     }
 
+    @Step
     public LoginPage writePassword(String q) {
         try {
             driver.findElement(CLICK_BUTTON_PASSWORD).sendKeys(q);
@@ -53,6 +56,7 @@ public class LoginPage {
         }
     }
 
+    @Step
     public String getTextErrorEmail() {
         try {
             return driver.findElement(DROP_TEXT_EMAIL).getText();
@@ -67,6 +71,7 @@ public class LoginPage {
         }
     }
 
+    @Step
     public String getTextErrorPassword() {
         try {
             return driver.findElement(DROP_TEXT_PASSWORD).getText();
@@ -81,6 +86,7 @@ public class LoginPage {
         }
     }
 
+    @Step
     public String getTextError() {
         try {
             return driver.findElement(ERROR_TEXT).getText();
@@ -95,6 +101,7 @@ public class LoginPage {
         }
     }
 
+    @Step
     public LoginPage writeEmail(String q) {
         try {
             driver.findElement(CLICK_FIELD_EMAIL).sendKeys(q);
