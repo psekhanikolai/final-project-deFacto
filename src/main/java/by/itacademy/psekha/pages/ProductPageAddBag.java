@@ -1,6 +1,7 @@
 package by.itacademy.psekha.pages;
 
 import by.itacademy.psekha.driver.Singleton;
+import io.qameta.allure.Step;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.By;
@@ -20,6 +21,7 @@ public class ProductPageAddBag {
 
     private static final Logger logger = LogManager.getLogger(ProductPageAddBag.class);
 
+    @Step
     public ProductPageAddBag clickProductAddBag() {
         try {
             driver.findElement(PRODUCT_ADD_BAG).click();
@@ -34,6 +36,8 @@ public class ProductPageAddBag {
             throw e;
         }
     }
+
+    @Step
     public ProductPageAddBag clickProductAddL() {
         try {
             driver.findElement(PRODUCT_ADD_L).click();
@@ -48,10 +52,12 @@ public class ProductPageAddBag {
             throw e;
         }
     }
-    public ProductPageAddBag clickTitleBag() {
+
+    @Step
+    public BagPage clickTitleBag() {
         try {
             driver.findElement(CLICK_TITLE_BAG).click();
-            return this;
+            return new BagPage();
         } catch (NoSuchElementException e) {
             logger.info("Attempted to click but element not found.");
             logger.error("Element to click not found");
